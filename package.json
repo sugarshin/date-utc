@@ -1,0 +1,61 @@
+{
+  "name": "date-utc",
+  "version": "0.0.1",
+  "description": "wrapper library for utc methods",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:sugarshin/date-utc.git"
+  },
+  "main": "index.js",
+  "files": [
+    "lib",
+    "index.js",
+    "test",
+    "package.json",
+    "README.md"
+  ],
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "rules": {
+      "strict": 0,
+      "quotes": [
+        1,
+        "single",
+        "avoid-escape"
+      ],
+      "no-underscore-dangle": 0,
+      "no-unused-vars": [
+        1
+      ]
+    },
+    "env": {
+      "browser": true,
+      "node": true
+    }
+  },
+  "scripts": {
+    "lint": "eslint src/date-utc.js",
+    "compile": "babel src/date-utc.js -o lib/date-utc.js",
+    "test": "mocha --compilers js:espower-babel/guess test/**/*.js",
+    "build-standalone": "browserify src/date-utc.js -t babelify -s dateUtc | derequire > build/date-utc.js",
+    "build-min": "uglifyjs build/date-utc.js -m -c warnings=false --comments '/\\/*!/' -o build/date-utc.min.js",
+    "build": "npm run lint && npm run compile && npm run build-standalone && npm run build-min"
+  },
+  "engines": {
+    "node": "0.12.x"
+  },
+  "author": "sugarshin",
+  "license": "MIT",
+  "devDependencies": {
+    "babel": "^5.0.10",
+    "babel-eslint": "^2.0.2",
+    "babelify": "^6.0.2",
+    "browserify": "^9.0.7",
+    "derequire": "^2.0.0",
+    "eslint": "^0.18.0",
+    "espower-babel": "^1.4.1",
+    "mocha": "^2.2.3",
+    "power-assert": "^0.10.2",
+    "uglify-js": "^2.4.19"
+  }
+}
