@@ -1,6 +1,6 @@
 {
   "name": "date-utc",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "wrapper library for utc methods",
   "repository": {
     "type": "git",

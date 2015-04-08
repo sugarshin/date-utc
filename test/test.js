@@ -2,6 +2,16 @@ import assert from 'power-assert';
 import DateUTC from '../build/date-utc';
 
 describe('DateUTC', () => {
+  let t = new DateUTC();
+  console.log(t._args);
+  describe('new DateUTC', () => {
+    it('new Date.toString() === new DateUTC.toString()', () => {
+      let d1 = new Date().toString();
+      let d2 = new DateUTC()._originDate.toString();
+      assert(d1 === d2);
+    });
+  });
+
   describe('DateUTC.now()', () => {
     it('Date.now() - offset === DateUTC.now()', () => {
       let d1 = Date.now();

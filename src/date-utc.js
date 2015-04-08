@@ -20,14 +20,19 @@ export default class DateUTC {
   }
 
   static parse(dateString) {
-    return Date.parse(dateString) + this.prototype._getOffsetTime();
+    return isNaN(Date.parse(dateString)) && Date.parse(dateString) + this.prototype._getTimezoneOffset();
   }
 
   _getTimezoneOffset() {
     return new Date().getTimezoneOffset() * 60 * 1000;
   }
 
+  _configure(...args) {
+    this._args = args;
+  }
+
   constructor(...args) {
+    this._configure(...args);
     this._originDate = new Date(...args);
   }
 

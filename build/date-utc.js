@@ -24,6 +24,7 @@ var DateUTC = (function () {
 
     _classCallCheck(this, DateUTC);
 
+    this._configure.apply(this, args);
     this._originDate = new (_bind.apply(Date, [null].concat(args)))();
   }
 
@@ -31,6 +32,15 @@ var DateUTC = (function () {
     key: "_getTimezoneOffset",
     value: function _getTimezoneOffset() {
       return new Date().getTimezoneOffset() * 60 * 1000;
+    }
+  }, {
+    key: "_configure",
+    value: function _configure() {
+      for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+        args[_key2] = arguments[_key2];
+      }
+
+      this._args = args;
     }
   }, {
     key: "getDate",
@@ -91,7 +101,7 @@ var DateUTC = (function () {
   }, {
     key: "parse",
     value: function parse(dateString) {
-      return Date.parse(dateString) + this.prototype._getOffsetTime();
+      return isNaN(Date.parse(dateString)) && Date.parse(dateString) + this.prototype._getTimezoneOffset();
     }
   }]);
 
