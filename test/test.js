@@ -1,5 +1,5 @@
 import assert from 'power-assert';
-import DateUTC from '..';
+import DateUTC from '../build/date-utc';
 
 describe('DateUTC', () => {
   describe('DateUTC.now()', () => {
